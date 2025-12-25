@@ -12,23 +12,19 @@ Local-only Android app for managing medical appointments (SQLite).
 - Doctor: username `doctor` / password `doc123` (role: doctor)
 - Patient: username `patient` / password `patient123` (role: patient)
 
-Implemented doctor features: listing of appointments assigned to the logged-in doctor, actions to mark as done, cancel, or reschedule (date/time).
-
-Implemented admin features (in progress):
-- Manage users (add, change role, reset password, delete)
-- Manage doctors' timeslots (add, toggle availability)
-
-Next: add local reminders and tests.
 ## Current features implemented
 - Local SQLite schema with `users`, `appointments`, and `timeslots` tables.
 - Login and inline registration (creates a patient account).
-- Patient flow: create new appointment (date/time/reason) and view history.
-- Placeholders for Doctor and Admin activities.
+- Patient flow: create new appointment (date/time/reason) and view history with cancel option.
+- Doctor flow: view assigned appointments, mark as done, cancel, or reschedule.
+- Admin features: Manage users and doctors' timeslots (placeholders).
+- Local appointment reminders with configurable lead time (10, 30, or 60 minutes).
+- Settings screen to configure reminder preferences.
 
 ## Next steps (planned)
 - Implement doctor availability (timeslots) and appointment booking constraints.
-- Implement appointment edit/cancel and admin user management.
-- Add local notifications for reminders.
-- Add tests and improve UI (RecyclerView, localization, better UX).
+- Improve admin user management UI.
+- Add comprehensive tests.
+- Improve UI/UX (better styling, localization).
 
 If you want, I can continue implementing doctor/admin features and reminders now.

@@ -2,6 +2,8 @@ package com.example.cabinetmedicalapp;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +15,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.database.Cursor;
-
 import java.util.ArrayList;
 
 public class AdminActivity extends AppCompatActivity {
@@ -24,6 +24,7 @@ public class AdminActivity extends AppCompatActivity {
     Button btnAddUser;
     UserAdapter userAdapter;
     ArrayList<Integer> userIds = new ArrayList<>();
+    int currentUserId = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,16 @@ public class AdminActivity extends AppCompatActivity {
         // toolbar
         androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        if (getIntent() != null && getIntent().hasExtra("USER_ID")) {
+            currentUserId = getIntent().getIntExtra("USER_ID", -1);
+        }
+
+        if (currentUserId == -1) {
+            Toast.makeText(this, getString(R.string.err_not_logged), Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+        }
     }
 
     private void loadUsers() {
@@ -248,8 +259,8 @@ public class AdminActivity extends AppCompatActivity {
                     .setTitle(getString(R.string.action_logout))
                     .setMessage(getString(R.string.action_logout) + " ?")
                     .setPositiveButton(getString(R.string.action_logout), (dialog, which) -> {
-                        android.content.Intent i = new android.content.Intent(this, LoginActivity.class);
-                        i.addFlags(android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP | android.content.Intent.FLAG_ACTIVITY_NEW_TASK | android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        Intent i = new Intent(this, LoginActivity.class);
+                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(i);
                         finish();
                     })
@@ -257,7 +268,7 @@ public class AdminActivity extends AppCompatActivity {
                     .show();
             return true;
         } else if (id == R.id.action_settings) {
-            startActivity(new android.content.Intent(this, SettingsActivity.class));
+            startActivity(new Intent(this, SettingsActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

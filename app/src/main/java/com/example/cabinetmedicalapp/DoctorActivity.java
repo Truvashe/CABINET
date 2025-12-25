@@ -112,6 +112,12 @@ public class DoctorActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        loadAppointments();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
@@ -139,12 +145,17 @@ public class DoctorActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    }
 
     private void showRescheduleDialog(int apptId) {
         View v = LayoutInflater.from(this).inflate(R.layout.dialog_reschedule, null);
         EditText editDate = v.findViewById(R.id.edit_new_date);
         EditText editTime = v.findViewById(R.id.edit_new_time);
+
+        // Add pickers
+        editDate.setFocusable(false);
+        editTime.setFocusable(false);
+        editDate.setOnClickListener(ev -> showDatePicker(editDate));
+        editTime.setOnClickListener(ev -> showTimePicker(editTime));
 
         new AlertDialog.Builder(this)
                 .setTitle(getString(R.string.reprogram))
@@ -158,7 +169,6 @@ public class DoctorActivity extends AppCompatActivity {
                             Toast.makeText(DoctorActivity.this, getString(R.string.err_fill_date_time), Toast.LENGTH_SHORT).show();
                             return;
                         }
-                        // cancel old reminder, update DB, then schedule new reminder
                         ReminderScheduler.cancelReminder(DoctorActivity.this, apptId);
                         boolean ok = myDb.updateAppointmentDateTime(apptId, newDate, newTime);
                         if (ok) {
@@ -170,5 +180,28 @@ public class DoctorActivity extends AppCompatActivity {
                 })
                 .setNegativeButton(getString(R.string.cancel), null)
                 .show();
+    }
+
+    private void showDatePicker(final EditText target) {
+        java.util.Calendar cal = java.util.Calendar.getInstance();
+        int y = cal.get(java.util.Calendar.YEAR);
+        int m = cal.get(java.util.Calendar.MONTH);
+        int d = cal.get(java.util.Calendar.DAY_OF_MONTH);
+        android.app.DatePickerDialog dp = new android.app.DatePickerDialog(this, (view, year, month, dayOfMonth) -> {
+            String dateStr = String.format(java.util.Locale.getDefault(), "%02d/%02d/%04d", dayOfMonth, month + 1, year);
+            target.setText(dateStr);
+        }, y, m, d);
+        dp.show();
+    }
+
+    private void showTimePicker(final EditText target) {
+        java.util.Calendar cal = java.util.Calendar.getInstance();
+        int h = cal.get(java.util.Calendar.HOUR_OF_DAY);
+        int min = cal.get(java.util.Calendar.MINUTE);
+        android.app.TimePickerDialog tp = new android.app.TimePickerDialog(this, (view, hourOfDay, minute) -> {
+            String timeStr = String.format(java.util.Locale.getDefault(), "%02d:%02d", hourOfDay, minute);
+            target.setText(timeStr);
+        }, h, min, true);
+        tp.show();
     }
 }

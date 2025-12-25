@@ -4,82 +4,22 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.VH> {
-    public interface Listener {
-        void onItemClicked(int apptId, int position);
-    }
+public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.ViewHolder> {
 
-    private final Context ctx;
-    private final ArrayList<AppointmentItem> items = new ArrayList<>();
-    private Listener listener;
+    private List<AppointmentItem> items = new ArrayList<>();
+    private Context context;
+    private OnItemClickListener listener;
 
-    public AppointmentAdapter(Context ctx) {
-        this.ctx = ctx;
-    }
-
-    public void setListener(Listener l) {
-        this.listener = l;
-    }
-
-    public void setItems(ArrayList<AppointmentItem> list) {
-        items.clear();
-        items.addAll(list);
-        notifyDataSetChanged();
-    }
-
-    @NonNull
-    @Override
-    public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(ctx).inflate(R.layout.appointment_card, parent, false);
-        return new VH(v);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull VH holder, int position) {
-        AppointmentItem it = items.get(position);
-        holder.tvTitle.setText(it.title);
-        holder.tvReason.setText(it.reason);
-        holder.tvStatus.setText(it.status);
-        // set status visual
-        if ("done".equalsIgnoreCase(it.status)) {
-            holder.tvStatus.setBackgroundResource(R.drawable.status_chip);
-            holder.tvStatus.setBackgroundTintList(android.content.res.ColorStateList.valueOf(ctx.getResources().getColor(R.color.chip_done)));
-        } else if ("cancelled".equalsIgnoreCase(it.status)) {
-            holder.tvStatus.setBackgroundResource(R.drawable.status_chip);
-            holder.tvStatus.setBackgroundTintList(android.content.res.ColorStateList.valueOf(ctx.getResources().getColor(R.color.chip_cancelled)));
-        } else {
-            holder.tvStatus.setBackgroundResource(R.drawable.status_chip);
-            holder.tvStatus.setBackgroundTintList(android.content.res.ColorStateList.valueOf(ctx.getResources().getColor(R.color.chip_scheduled)));
-        }
-        holder.itemView.setOnClickListener(v -> {
-            if (listener != null) listener.onItemClicked(it.id, position);
-        });
-    }
-
-    @Override
-    public int getItemCount() {
-        return items.size();
-    }
-
-    static class VH extends RecyclerView.ViewHolder {
-        ImageView icon;
-        TextView tvTitle, tvReason, tvStatus;
-
-        public VH(@NonNull View itemView) {
-            super(itemView);
-            icon = itemView.findViewById(R.id.icon);
-            tvTitle = itemView.findViewById(R.id.tv_title);
-            tvReason = itemView.findViewById(R.id.tv_reason);
-            tvStatus = itemView.findViewById(R.id.tv_status);
-        }
+    public interface OnItemClickListener {
+        void onItemClick(int apptId, int position);
     }
 
     public static class AppointmentItem {
@@ -93,6 +33,57 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
             this.title = title;
             this.reason = reason;
             this.status = status;
+        }
+    }
+
+    public AppointmentAdapter(Context context) {
+        this.context = context;
+    }
+
+    public void setListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    public void setItems(List<AppointmentItem> items) {
+        this.items = items;
+        notifyDataSetChanged();
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_appointment, parent, false);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        AppointmentItem item = items.get(position);
+        holder.tvTitle.setText(item.title);
+        holder.tvReason.setText(item.reason);
+        holder.tvStatus.setText(item.status);
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(item.id, position);
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return items.size();
+    }
+
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView tvTitle, tvReason, tvStatus;
+
+        ViewHolder(View itemView) {
+            super(itemView);
+            tvTitle = itemView.findViewById(R.id.tv_appointment_title);
+            tvReason = itemView.findViewById(R.id.tv_appointment_reason);
+            tvStatus = itemView.findViewById(R.id.tv_appointment_status);
         }
     }
 }

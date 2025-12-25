@@ -3,26 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="12dp"
-    android:background="@drawable/card_bg">
+    android:padding="16dp">
 
     <EditText
         android:id="@+id/edit_new_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nouvelle date (ex: 25/12/2025)"
-        android:background="@drawable/input_bg"
-        android:padding="10dp"
-        android:layout_marginBottom="8dp"
-        android:textColor="@color/onBackground" />
+        android:hint="@string/hint_new_date"
+        android:inputType="none"
+        android:focusable="false"
+        android:clickable="true" />
 
     <EditText
         android:id="@+id/edit_new_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nouvelle heure (ex: 14:30)"
-        android:background="@drawable/input_bg"
-        android:padding="10dp"
-        android:textColor="@color/onBackground" />
-
+        android:hint="@string/hint_new_time"
+        android:inputType="none"
+        android:focusable="false"
+        android:clickable="true"
+        android:layout_marginTop="8dp" />
 </LinearLayout>

@@ -3,37 +3,28 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="12dp"
-    android:background="@color/surface">
+    android:padding="16dp">
 
     <EditText
         android:id="@+id/edit_new_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nom d'utilisateur"
-        android:background="@drawable/input_bg"
-        android:padding="10dp"
-        android:layout_marginBottom="8dp"
-        android:textColor="@color/onBackground" />
+        android:hint="@string/hint_username"
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/edit_new_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Mot de passe"
+        android:hint="@string/hint_password"
         android:inputType="textPassword"
-        android:background="@drawable/input_bg"
-        android:padding="10dp"
-        android:layout_marginBottom="8dp"
-        android:textColor="@color/onBackground" />
+        android:layout_marginTop="8dp" />
 
     <EditText
         android:id="@+id/edit_new_role"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Rôle (patient/doctor/admin)"
-        android:background="@drawable/input_bg"
-        android:padding="10dp"
-        android:textColor="@color/onBackground" />
-
+        android:hint="Role (patient/doctor/admin)"
+        android:inputType="text"
+        android:layout_marginTop="8dp" />
 </LinearLayout>

@@ -3,40 +3,26 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="12dp"
-    android:background="@color/surface">
+    android:padding="16dp">
 
     <EditText
         android:id="@+id/edit_slot_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Date (ex: 25/12/2025)"
-        android:background="@drawable/input_bg"
-        android:padding="10dp"
-        android:layout_marginBottom="8dp"
-        android:textColor="@color/onBackground" />
+        android:hint="@string/hint_date"
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/edit_slot_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Heure (ex: 14:30)"
-        android:background="@drawable/input_bg"
-        android:padding="10dp"
-        android:layout_marginBottom="8dp"
-        android:textColor="@color/onBackground" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Créneaux existants"
-        style="@style/SubHeading"
+        android:hint="@string/hint_time"
+        android:inputType="text"
         android:layout_marginTop="8dp" />
 
     <ListView
         android:id="@+id/list_timeslots"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:dividerHeight="8dp" />
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp" />
 </LinearLayout>

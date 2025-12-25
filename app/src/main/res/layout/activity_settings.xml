@@ -1,61 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/background"
-    android:padding="12dp">
+    android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/colorPrimary"
-        android:title="@string/action_settings"
-        android:titleTextColor="@color/onPrimary"
-        android:paddingLeft="16dp" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title_reminder_lead_time"
-        android:paddingTop="16dp"
-        android:textAppearance="@style/SubHeading" />
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:padding="16dp" />
 
     <RadioGroup
         android:id="@+id/rg_lead_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="12dp">
+        android:padding="16dp">
 
         <RadioButton
-            android:id="@+id/rb_10"
+            android:id="@+id/rb_10_min"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/option_10_min" />
 
         <RadioButton
-            android:id="@+id/rb_30"
+            android:id="@+id/rb_30_min"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/option_30_min" />
+            android:text="@string/option_30_min"
+            android:checked="true" />
 
         <RadioButton
-            android:id="@+id/rb_60"
+            android:id="@+id/rb_60_min"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/option_60_min" />
-
     </RadioGroup>
 
     <Button
         android:id="@+id/btn_save_settings"
-        style="@style/AppButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/button_bg_ripple"
-        android:text="@string/btn_save_settings" />
-
+        android:text="@string/btn_save_settings"
+        android:layout_margin="16dp" />
 </LinearLayout>

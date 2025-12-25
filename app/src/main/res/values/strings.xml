@@ -21,15 +21,18 @@
     <string name="title_new_appointment">Nouveau rendez-vous</string>
     <string name="label_appointment_details">Détails du rendez-vous</string>
     <string name="hint_patient">Patient</string>
+    <string name="hint_patient_name">Nom du patient</string>
     <string name="hint_date">Date (ex: 25/12/2025)</string>
+    <string name="hint_new_date">Nouvelle date</string>
     <string name="hint_time">Heure (ex: 14:30)</string>
+    <string name="hint_new_time">Nouvelle heure</string>
     <string name="hint_reason">Motif</string>
     <string name="btn_save">Enregistrer</string>
     <string name="label_history">Historique</string>
     <string name="content_desc_add_appointment">Ajouter rendez-vous</string>
     <string name="err_fill_all">Veuillez remplir tous les champs</string>
-    <string name="err_date_format">Format de date invalide</string>
-    <string name="err_time_format">Format d'heure invalide</string>
+    <string name="err_date_format">Format de date invalide (utiliser jj/MM/aaaa)</string>
+    <string name="err_time_format">Format d'heure invalide (utiliser HH:mm)</string>
     <string name="msg_no_doctor">Aucun médecin trouvé</string>
     <string name="msg_saved">Rendez-vous enregistré !</string>
 
@@ -89,6 +92,7 @@
     <string name="notification_channel_desc">Notifications pour rappels de rendez-vous</string>
     <string name="notification_title">Rappel rendez-vous</string>
     <string name="notification_message_format">RDV le %1$s à %2$s — %3$s</string>
+    <string name="notification_text_prefix">Votre rendez-vous : </string>
 
     <!-- Admin options -->
     <string name="option_modify_role">Modifier rôle</string>

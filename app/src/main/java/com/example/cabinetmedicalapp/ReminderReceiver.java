@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 
 public class ReminderReceiver extends BroadcastReceiver {
-    public static final String EXTRA_APPT_ID = "EXTRA_APPT_ID";
+    public static final String EXTRA_APPT_ID = "appt_id";
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -19,12 +19,11 @@ public class ReminderReceiver extends BroadcastReceiver {
             String date = c.getString(c.getColumnIndexOrThrow("date"));
             String time = c.getString(c.getColumnIndexOrThrow("time"));
             String reason = c.getString(c.getColumnIndexOrThrow("reason"));
-            int patientId = c.getInt(c.getColumnIndexOrThrow("patient_id"));
-
+            
             String title = context.getString(R.string.notification_title);
-            String message = String.format(context.getString(R.string.notification_message_format), date, time, reason);
-
-            NotificationHelper.showNotification(context, apptId, title, message);
+            String text = context.getString(R.string.notification_text_prefix) + date + " " + time + " - " + reason;
+            
+            NotificationHelper.showNotification(context, apptId, title, text);
         }
         c.close();
     }
