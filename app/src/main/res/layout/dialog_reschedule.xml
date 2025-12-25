@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:background="@drawable/card_bg">
+
+    <EditText
+        android:id="@+id/edit_new_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nouvelle date (ex: 25/12/2025)"
+        android:background="@drawable/input_bg"
+        android:padding="10dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/onBackground" />
+
+    <EditText
+        android:id="@+id/edit_new_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nouvelle heure (ex: 14:30)"
+        android:background="@drawable/input_bg"
+        android:padding="10dp"
+        android:textColor="@color/onBackground" />
+
+</LinearLayout>

@@ -1,0 +1,110 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/colorPrimary"
+            android:title="@string/title_new_appointment"
+            android:titleTextColor="@color/onPrimary"
+            android:paddingLeft="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_bg"
+            android:padding="16dp"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_appointment_details"
+                style="@style/Heading"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/edit_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_patient"
+                android:background="@drawable/input_bg"
+                android:textColor="@color/onBackground"
+                android:textColorHint="@color/muted"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/edit_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_date"
+                android:background="@drawable/input_bg"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/edit_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_time"
+                android:background="@drawable/input_bg"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/edit_reason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_reason"
+                android:background="@drawable/input_bg"
+                android:layout_marginBottom="12dp" />
+
+            <Button
+                android:id="@+id/btn_save"
+                style="@style/AppButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_save" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_history"
+                style="@style/SubHeading"
+                android:layout_marginTop="14dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_appointments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:clipToPadding="false"
+                android:paddingBottom="16dp"
+                android:background="@color/surface" />
+
+            <!-- Floating action button for creating a new appointment -->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_add_appointment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_gravity="end"
+                android:contentDescription="@string/content_desc_add_appointment"
+                android:tint="@color/onPrimary"
+                android:src="@drawable/ic_add"
+                android:backgroundTint="@color/colorPrimary"
+                app:rippleColor="@color/onPrimary" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

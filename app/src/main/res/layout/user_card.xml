@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    card_view:cardCornerRadius="12dp"
+    card_view:cardElevation="4dp"
+    android:stateListAnimator="@animator/card_elevation_animator">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="username"
+            android:textColor="@color/onBackground"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_role"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:padding="6dp"
+            android:text="role"
+            android:textColor="@color/white"
+            android:background="@drawable/status_chip" />
+
+        <ImageButton
+            android:id="@+id/btn_change_role"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_manage"
+            android:tint="@color/colorPrimary"
+            android:contentDescription="@string/title_change_role" />
+
+        <ImageButton
+            android:id="@+id/btn_reset_pass"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_edit"
+            android:tint="@color/colorPrimary"
+            android:contentDescription="@string/title_reset_password"
+            android:layout_marginStart="6dp" />
+
+        <ImageButton
+            android:id="@+id/btn_delete_user"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_delete"
+            android:tint="@color/error"
+            android:contentDescription="@string/option_delete_user"
+            android:layout_marginStart="6dp" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

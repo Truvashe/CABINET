@@ -1,0 +1,42 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. Light variant for modern professional look -->
+    <style name="Base.Theme.CabinetMedicalApp" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorOnPrimary">@color/onPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="android:statusBarColor">@color/colorPrimaryVariant</item>
+        <item name="android:navigationBarColor">@color/background</item>
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:textColor">@color/onBackground</item>
+    </style>
+
+    <style name="Theme.CabinetMedicalApp" parent="Base.Theme.CabinetMedicalApp" />
+
+    <!-- Common text styles -->
+    <style name="Heading">
+        <item name="android:textColor">@color/onBackground</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SubHeading">
+        <item name="android:textColor">@color/muted</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="BodyText">
+        <item name="android:textColor">@color/onBackground</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- Button style with ripple -->
+    <style name="AppButton">
+        <item name="android:background">@drawable/button_bg_ripple</item>
+        <item name="android:textColor">@color/onPrimary</item>
+        <item name="android:paddingLeft">14dp</item>
+        <item name="android:paddingRight">14dp</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+
+</resources>

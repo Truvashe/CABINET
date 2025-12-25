@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Light medical palette -->
+    <color name="colorPrimary">#00897B</color>
+    <color name="colorPrimaryVariant">#00695C</color>
+    <color name="colorSecondary">#26A69A</color>
+    <color name="colorAccent">#4DB6AC</color>
+
+    <color name="background">#F6F7F9</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="onPrimary">#FFFFFF</color>
+    <color name="onBackground">#102027</color>
+    <color name="muted">#607D8B</color>
+    <color name="error">#D32F2F</color>
+
+    <color name="chip_done">#2E7D32</color>
+    <color name="chip_scheduled">#FFB300</color>
+    <color name="chip_cancelled">#D32F2F</color>
+
+    <color name="white">#FFFFFFFF</color>
+</resources>
